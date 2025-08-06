@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="ProductionLikeTestSuite" parallel="tests" thread-count="2" verbose="2">
+    
+    <!-- Suite-level parameters -->
+    <parameter name="browser" value="chrome" />
+    <parameter name="environment" value="staging" />
+    <parameter name="headless" value="true" />
+    <parameter name="timeout" value="60" />
+    <parameter name="retryCount" value="2" />
+    
+    <!-- Global listeners -->
+    <listeners>
+        <listener class-name="listeners.TestListener" />
+        <listener class-name="listeners.RetryListener" />
+    </listeners>
+    
+    <!-- Production Test Suite -->
+    <test name="ProductionRegressionTests" parallel="classes" thread-count="3">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="staging" />
+        
+        <groups>
+            <run>
+                <include name="regression" />
+                <include name="smoke" />
+                <exclude name="development" />
+                <exclude name="unstable" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="tests.LoginTests" />
+            <class name="tests.SearchTests" />
+            <class name="tests.CheckoutTests" />
+        </classes>
+    </test>
+    
+    <!-- Critical Path Tests -->
+    <test name="CriticalPathTests" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="staging" />
+        
+        <groups>
+            <run>
+                <include name="critical" />
+                <include name="smoke" />
+            </run>
+        </groups>
+        
+        <packages>
+            <package name="tests.critical.*" />
+        </packages>
+    </test>
+    
+</suite>

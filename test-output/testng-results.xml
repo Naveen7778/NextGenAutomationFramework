@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="9" total="10" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-08-06T19:20:50 IST" name="SpecificTestSuite" finished-at="2025-08-06T19:21:12 IST" duration-ms="22035">
+    <groups>
+      <group name="testValidUserRegistration">
+        <method signature="SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" name="testValidUserRegistration" class="com.naveensdet.unifiedwebautomation.testcases.SignupTest"/>
+      </group> <!-- testValidUserRegistration -->
+      <group name="critical">
+        <method signature="SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" name="testValidUserRegistration" class="com.naveensdet.unifiedwebautomation.testcases.SignupTest"/>
+      </group> <!-- critical -->
+      <group name="smoke">
+        <method signature="SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" name="testValidUserRegistration" class="com.naveensdet.unifiedwebautomation.testcases.SignupTest"/>
+      </group> <!-- smoke -->
+      <group name="registration">
+        <method signature="SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" name="testValidUserRegistration" class="com.naveensdet.unifiedwebautomation.testcases.SignupTest"/>
+      </group> <!-- registration -->
+      <group name="positive">
+        <method signature="SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" name="testValidUserRegistration" class="com.naveensdet.unifiedwebautomation.testcases.SignupTest"/>
+      </group> <!-- positive -->
+    </groups>
+    <test started-at="2025-08-06T19:20:50 IST" name="SpecificTest" finished-at="2025-08-06T19:21:12 IST" duration-ms="22035">
+      <class name="com.naveensdet.unifiedwebautomation.testcases.SignupTest">
+        <test-method is-config="true" signature="setupClass()[pri:0, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" started-at="2025-08-06T19:20:50 IST" name="setupClass" finished-at="2025-08-06T19:20:57 IST" duration-ms="6833" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupClass -->
+        <test-method is-config="true" signature="setUpTest(java.lang.reflect.Method)[pri:0, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" started-at="2025-08-06T19:20:57 IST" name="setUpTest" finished-at="2025-08-06T19:20:57 IST" duration-ms="7" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.naveensdet.unifiedwebautomation.testcases.SignupTest.testValidUserRegistration()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpTest -->
+        <test-method signature="testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" started-at="2025-08-06T19:20:57 IST" name="testValidUserRegistration" description="Test successful user registration with valid data" finished-at="2025-08-06T19:21:12 IST" duration-ms="14547" status="FAIL">
+          <exception class="com.naveensdet.unifiedwebautomation.utils.FrameworkException">
+            <message>
+              <![CDATA[Timeout waiting for element [Account Info Header] to be visible]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[com.naveensdet.unifiedwebautomation.utils.FrameworkException: Timeout waiting for element [Account Info Header] to be visible
+at com.naveensdet.unifiedwebautomation.keywords.WaitKeywords.waitForElementVisible(WaitKeywords.java:133)
+at com.naveensdet.unifiedwebautomation.keywords.Keywords.waitForElementVisible(Keywords.java:1881)
+at com.naveensdet.unifiedwebautomation.bpc.AuthBPC.registerUser(AuthBPC.java:34)
+at com.naveensdet.unifiedwebautomation.testcases.SignupTest.testValidUserRegistration(SignupTest.java:39)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+Caused by: org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.xpath: //b[contains(text(),'Enter Account Information')] (tried for 10 second(s) with 500 milliseconds interval)
+Build info: version: '4.34.0', revision: '707dcb4246*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.7'
+Driver info: driver.version: unknown
+at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+at com.naveensdet.unifiedwebautomation.keywords.WaitKeywords.waitForElementVisible(WaitKeywords.java:125)
+... 29 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- com.naveensdet.unifiedwebautomation.utils.FrameworkException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testValidUserRegistration -->
+        <test-method is-config="true" signature="tearDownTest(org.testng.ITestResult)[pri:0, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" started-at="2025-08-06T19:21:12 IST" name="tearDownTest" finished-at="2025-08-06T19:21:12 IST" duration-ms="3" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testValidUserRegistration status=FAILURE method=SignupTest.testValidUserRegistration()[pri:1, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownTest -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.naveensdet.unifiedwebautomation.testcases.SignupTest@1506f20f]" started-at="2025-08-06T19:21:12 IST" name="tearDownClass" finished-at="2025-08-06T19:21:12 IST" duration-ms="319" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.naveensdet.unifiedwebautomation.testcases.SignupTest -->
+    </test> <!-- SpecificTest -->
+  </suite> <!-- SpecificTestSuite -->
+</testng-results>

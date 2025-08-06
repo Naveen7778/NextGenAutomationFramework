@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="DataDrivenTestSuite" parallel="false" verbose="2">
+    
+    <parameter name="browser" value="chrome" />
+    <parameter name="environment" value="qa" />
+    <parameter name="excelFile" value="testdata/TestData.xlsx" />
+    
+    <listeners>
+        <listener class-name="listeners.DataProviderListener" />
+        <listener class-name="listeners.ExcelReportListener" />
+    </listeners>
+    
+    <test name="ExcelDataDrivenTests">
+        <groups>
+            <run>
+                <include name="datadriven" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="tests.UserRegistrationDataDrivenTests" />
+            <class name="tests.LoginDataDrivenTests" />
+            <class name="tests.ProductSearchDataDrivenTests" />
+        </classes>
+    </test>
+    
+</suite>

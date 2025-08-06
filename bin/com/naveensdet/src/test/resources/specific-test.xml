@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="SpecificTestSuite" verbose="2">
+    <parameter name="browser" value="chrome" />
+    <parameter name="environment" value="qa" />
+    
+    <test name="SpecificTest">
+        <groups>
+            <run>
+                <include name="validLoginTest" />  <!-- Your unique group name -->
+            </run>
+        </groups>
+        
+        <packages>
+            <package name="tests.*" />
+        </packages>
+    </test>
+</suite>

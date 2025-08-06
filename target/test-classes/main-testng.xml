@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="WebAutomationTestSuite" parallel="tests" thread-count="3" verbose="2">
+    
+    <!-- Global Parameters -->
+    <parameter name="browser" value="chrome" />
+    <parameter name="environment" value="qa" />
+    <parameter name="headless" value="false" />
+    <parameter name="timeout" value="30" />
+    <parameter name="screenshot" value="true" />
+    
+    <!-- ⭐ CORRECTED GLOBAL LISTENERS WITH FULL PACKAGE NAMES -->
+    <listeners>
+        <listener class-name="com.naveensdet.unifiedwebautomation.listeners.TestExecutionListener" />
+        <listener class-name="com.naveensdet.unifiedwebautomation.listeners.SuiteListener" />
+        <listener class-name="com.naveensdet.unifiedwebautomation.listeners.ScreenshotListener" />
+        <listener class-name="com.naveensdet.unifiedwebautomation.listeners.RetryListener" />
+        <listener class-name="org.testng.reporters.EmailableReporter2" />
+    </listeners>
+    
+    <!-- ================================ -->
+    <!-- SMOKE TESTS - Critical Path     -->
+    <!-- ================================ -->
+    <test name="SmokeTests" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        
+        <groups>
+            <run>
+                <include name="smoke" />
+                <include name="critical" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.LoginTests">
+                <methods>
+                    <include name="testValidLogin" />
+                    <include name="testInvalidLogin" />
+                </methods>
+            </class>
+            <class name="com.naveensdet.unifiedwebautomation.tests.NavigationTests">
+                <methods>
+                    <include name="testHomePageNavigation" />
+                    <include name="testMenuNavigation" />
+                </methods>
+            </class>
+            <class name="com.naveensdet.unifiedwebautomation.tests.SearchTests">
+                <methods>
+                    <include name="testBasicSearch" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- REGRESSION TESTS - Full Suite   -->
+    <!-- ================================ -->
+    <test name="RegressionTests" parallel="classes" thread-count="3">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        
+        <groups>
+            <run>
+                <include name="regression" />
+                <include name="functional" />
+                <exclude name="smoke" />  <!-- ✅ Exclude smoke to avoid duplication -->
+            </run>
+        </groups>
+        
+        <packages>
+            <package name="com.naveensdet.unifiedwebautomation.tests.functional.*" />
+            <package name="com.naveensdet.unifiedwebautomation.tests.integration.*" />
+        </packages>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- CROSS BROWSER TESTS             -->
+    <!-- ================================ -->
+    <test name="CrossBrowserTests_Chrome" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        
+        <groups>
+            <run>
+                <include name="crossbrowser" />
+                <exclude name="smoke" />  <!-- ✅ Avoid duplication -->
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.CrossBrowserTests" />
+        </classes>
+    </test>
+    
+    <test name="CrossBrowserTests_Firefox" parallel="methods" thread-count="2">
+        <parameter name="browser" value="firefox" />
+        <parameter name="environment" value="qa" />
+        
+        <groups>
+            <run>
+                <include name="crossbrowser" />
+                <exclude name="smoke" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.CrossBrowserTests" />
+        </classes>
+    </test>
+    
+    <test name="CrossBrowserTests_Edge" parallel="methods" thread-count="2">
+        <parameter name="browser" value="edge" />
+        <parameter name="environment" value="qa" />
+        
+        <groups>
+            <run>
+                <include name="crossbrowser" />
+                <exclude name="smoke" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.CrossBrowserTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- DATA DRIVEN TESTS               -->
+    <!-- ================================ -->
+    <test name="DataDrivenTests" parallel="false">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="dataFile" value="testdata/user-registration.xlsx" />
+        
+        <groups>
+            <run>
+                <include name="datadriven" />
+                <include name="excel" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.UserRegistrationTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.UserManagementTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.ProductCatalogTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- API + UI INTEGRATION TESTS      -->
+    <!-- ================================ -->
+    <test name="IntegrationTests" parallel="classes" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="apiBaseUrl" value="https://api.qa.example.com" />
+        
+        <groups>
+            <run>
+                <include name="integration" />
+                <include name="api" />
+                <include name="ui" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.APIIntegrationTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.UIValidationTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.DataSyncTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- MOBILE RESPONSIVE TESTS         -->
+    <!-- ================================ -->
+    <test name="MobileResponsiveTests" parallel="methods" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="deviceEmulation" value="true" />
+        <parameter name="viewport" value="mobile" />
+        
+        <groups>
+            <run>
+                <include name="mobile" />
+                <include name="responsive" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.MobileResponsiveTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.TouchInteractionTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- ACCESSIBILITY TESTS             -->
+    <!-- ================================ -->
+    <test name="AccessibilityTests" parallel="false">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="accessibility" value="true" />
+        
+        <groups>
+            <run>
+                <include name="accessibility" />
+                <include name="a11y" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.AccessibilityComplianceTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- PERFORMANCE TESTS               -->
+    <!-- ================================ -->
+    <test name="PerformanceTests" parallel="false">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="performanceMonitoring" value="true" />
+        
+        <groups>
+            <run>
+                <include name="performance" />
+                <include name="loadtime" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.PageLoadPerformanceTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.JavaScriptPerformanceTests" />
+        </classes>
+    </test>
+    
+    <!-- ================================ -->
+    <!-- FILE OPERATION TESTS            -->
+    <!-- ================================ -->
+    <test name="FileOperationTests" parallel="classes" thread-count="2">
+        <parameter name="browser" value="chrome" />
+        <parameter name="environment" value="qa" />
+        <parameter name="downloadPath" value="downloads/" />
+        <parameter name="uploadPath" value="testfiles/" />
+        
+        <groups>
+            <run>
+                <include name="fileops" />
+                <include name="upload" />
+                <include name="download" />
+            </run>
+        </groups>
+        
+        <classes>
+            <class name="com.naveensdet.unifiedwebautomation.tests.FileUploadTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.FileDownloadTests" />
+            <class name="com.naveensdet.unifiedwebautomation.tests.DocumentProcessingTests" />
+        </classes>
+    </test>
+
+</suite>
