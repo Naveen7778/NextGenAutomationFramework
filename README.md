@@ -84,3 +84,19 @@ XPath-Centric Framework Components:
 
 ### Quick Setup
 
+Clone the repository
+git clone https://github.com/Naveen7778/NextGenAutomationFramework.git
+
+Navigate to project directory
+cd NextGenAutomationFramework
+
+Install dependencies
+mvn clean install
+
+Verify setup
+mvn compile
+
+Run sample tests
+mvn test
+
+
